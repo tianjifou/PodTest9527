@@ -26,7 +26,7 @@ extension Array where Element: Comparable {
             for j in 0..<self.count - 1 - i {
                 if max(self[j], self[j+1]){
                     (self[j],self[j+1]) = (self[j+1],self[j])
-                    signal.wait()
+                    //signal.wait()
                 }
             }
         }
@@ -42,7 +42,7 @@ extension Array where Element: Comparable {
                 }
             }
             (self[min],self[i]) = (self[i],self[min])
-            signal.wait()
+            //signal.wait()
         }
         
     }
@@ -64,10 +64,10 @@ extension Array where Element: Comparable {
                 i += 1
             }
             self[j] = self[i]
-            signal.wait()
+            //signal.wait()
         }
         self[i] = temp
-        signal.wait()
+        //signal.wait()
         qkSort(left: left,right: i-1)
         qkSort(left: i+1, right: right)
         
@@ -90,7 +90,7 @@ extension Array where Element: Comparable {
         var nextCount = length
         for _ in 0..<self.count - 1 {
             (self[0],self[nextCount]) = (self[nextCount],self[0])
-            signal.wait()
+            //signal.wait()
             heapAdjust(index: 0, length: nextCount)
             nextCount -= 1
             
@@ -110,7 +110,7 @@ extension Array where Element: Comparable {
         }
         if index != temp {
             (self[temp],self[index]) = (self[index],self[temp])
-            signal.wait()
+            //signal.wait()
             
             heapAdjust(index: temp, length: length)
             
@@ -124,11 +124,11 @@ extension Array where Element: Comparable {
             let keyArr = self[index]
             while newArrCount >= 0 && self[newArrCount] > keyArr {
                 self[newArrCount+1] = self[newArrCount]
-                signal.wait()
+                //signal.wait()
                 newArrCount -= 1
             }
             self[newArrCount+1] = keyArr
-            signal.wait()
+            //signal.wait()
         }
     }
     
@@ -175,7 +175,7 @@ extension Array where Element: Comparable {
         
         for index in 0..<n {
             self[startIndex + index] = temArr[index]
-            signal.wait()
+            ////signal.wait()
         }
         
     }
